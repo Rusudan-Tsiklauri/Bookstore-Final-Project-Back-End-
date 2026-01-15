@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} My Profile {% endblock %}
+
+{% block container %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm text-center p-4">
+                <div class="mb-3">
+                    <img src="https://ui-avatars.com/api/?name={{ current_user.username }}&background=random"
+                         class="rounded-circle" width="100">
+                </div>
+                <h4>{{ current_user.username }}</h4>
+                <p class="text-muted">როლი: {{ current_user.role }}</p>
+                <hr><p class="small text-muted">გამარჯობა, {{ current_user.username }}!</p>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm p-4">
+                <h3 class="mb-4">პაროლის შეცვლა</h3>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        {{ form.old_password.label(class="form-label") }}
+                        {{ form.old_password(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.new_password.label(class="form-label") }}
+                        {{ form.new_password(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.repeat_password.label(class="form-label") }}
+                        {{ form.repeat_password(class="form-control") }}
+                    </div>
+
+                    {{ form.submit(class="btn btn-primary w-100") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

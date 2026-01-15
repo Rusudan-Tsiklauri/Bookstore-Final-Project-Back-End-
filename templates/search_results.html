@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title%} Search Result {% endblock %}
+
+
+{% block container %}
+<div class="container mt-4">
+    <h3>ძიების შედეგები: "{{ query }}"</h3>
+    <hr>
+
+    {% if products %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for product in products %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="/static/images/{{ product.image }}" class="card-img-top" style="height: auto object-fit: cover;" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text text-muted">{{ product.author }}</p>
+                        <a href="/detailed/{{ product.id}}" class="btn btn-primary btn-sm">ნახვა</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning mt-4">
+            სამწუხაროდ, პროდუქტი ვერ მოიძებნა
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

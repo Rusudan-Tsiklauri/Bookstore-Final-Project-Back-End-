@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title%}  Authors_detailed {% endblock %}
+
+
+{% block container %}
+
+<div class="container mt-4">
+    <h3 class="m-0">ძიების შედეგები: "{{ query }}"</h3>
+    <hr>
+    <div class="row">
+    {% if authors %}
+        {% for author in authors %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm border-0 text-center">
+                    <div class="p-3">
+                        <img src="/static/images/{{ author.image }}" class="rounded-circle img-thumbnail mx-auto" style="width: 140px; height: 140px; object-fit: cover;" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ author.name }}</h5>
+                        <a href="/authors_detailed/{{ author.name }}" class="btn btn-primary">დეტალური ინფორმაცია</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12 text-center mt-5">
+            <div class="alert alert-warning">ავტორი ვერ მოიძებნა</div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

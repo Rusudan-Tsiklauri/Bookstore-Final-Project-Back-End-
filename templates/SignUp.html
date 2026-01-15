@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Sign Up Page {% endblock %}
+
+{% block container %}
+<div class="row mt-2">
+    <form class="col-6 offset-3 my-2" method="post">
+        {{ form.hidden_tag() }}
+
+        {% for error in form.errors.values() %}
+        <div class="alert alert-danger">
+            {% for error in errors %}
+              * {{ error }} <br>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <div class="row mt-2">
+            {{ form.username(class="form-control", placeholder=form.username.label.text ) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.repeat_password(class="form-control", placeholder=form.repeat_password.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.email(class="form-control", placeholder=form.email.label.text) }}
+        </div>
+        <div class="row mt-2">
+          {{ form.gender(class="form-select")}}
+        </div>
+
+        <div class="row mt-2">
+           {{ form.country(class="form-select")}}
+        </div>
+         <div class="row mt-2">
+           {{ form.birthday.label }} {{ form.birthday(class="form-control")}}
+        </div>
+        <div  class="row mt-2">
+            {{ form.submit(class="btn btn-primary w-100")}}
+        </div>
+        <div class="row mt-2">
+            <p>თუ უკვე გაქვთ ანგარიში, გთხოვთ გაიაროთ <a class="btn btn-primary" type="submit" href="/login"> ავტორიზაცია</a> </p>
+        </div>
+    </form>
+</div>
+{% endblock %}
