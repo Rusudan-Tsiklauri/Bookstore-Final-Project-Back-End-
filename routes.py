@@ -160,7 +160,7 @@ def cart():
         products = Product.query.filter(Product.id.in_(cart_product_ids)).all()
     else:
         products = []
-    return render_template('cart.html', products=products, cart_items=length)
+    return render_template('Cart.html', products=products, cart_items=length)
 
 
 @app.route('/add_to_cart/<int:item_id>', methods=['GET', 'POST'])
@@ -399,3 +399,4 @@ def profile():
 
 
     return render_template("profile.html", form=form)
+
